@@ -1,15 +1,3 @@
-# def insertionSort(arr):
-#     #TODO: insertaion sort the arrya
-#     # Array with 1 element is automatically sorted
-#     for i in range(1, len(arr)):
-#         j = i
-#         while j > 0 and arr[j] < arr[j - 1]:
-#             temp = arr[j]
-#             arr[j] = arr[j - 1]
-#             arr[j - 1] = temp
-#             j -= 1
-#     return arr
-
 def insertionSort(arr):
     """
         Increasing order of elements
