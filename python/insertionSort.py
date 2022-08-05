@@ -12,6 +12,7 @@ def insertionSort(arr):
             j -= 1
     return arr
 
+
 # Testing
 arr = [1, 2, 3, 4, 3, -2, 6, 4]
 print(f'Original array: {arr}')
