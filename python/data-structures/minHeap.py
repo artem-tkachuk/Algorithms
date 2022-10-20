@@ -1,51 +1,3 @@
-def dijkstra(graphEdges, start, goal):
-    # graphEdges: List[List[List[destination, distance]]
-    # list of outgoing edges for each node in a graph
-    # every edge is [destination, distance]
-
-
-    # tent_distances = {node: float('inf') for node in range(num_nodes)}
-    num_nodes = len(graphEdges)
-
-    visited = {node: False for node in range(num_nodes)}
-    visited[start] = True
-
-    dist_heap = MinHeap([(start, 0)])
-
-    while not visited[goal]:
-        curr_node = dist_heap.remove()
-
-        for outgoing_edge in graphEdges[curr_node]:
-            [neighbor, distance_from_curr] = outgoing_edge
-            if not visited[neighbor]:  # if the destination node is not already visited
-                calculated_dist = tent_distances[curr_node] + distance_from_curr
-
-                if calculated_dist < tent_distances[neighbor]:
-                    tent_distances[neighbor] = calculated_dist
-
-
-def main():
-    # Adjacency list representation of a graph
-    graph = {
-        "A": ["B", "C"],
-        "B": [],
-        "C": ["B", "D"],
-        "D": []
-    }
-
-    dijkstra(graph, start="A", goal="D")
-
-
-main()
-
-
-
-
-
-
-
-
-
 # Do not edit the class below except for the buildHeap,
 # siftDown, siftUp, peek, remove, and insert methods.
 # Feel free to add new properties and methods to the class.
@@ -54,6 +6,8 @@ main()
 # O(1) time, O(1) space
 def swap(i, j, heap):
     heap[i], heap[j] = heap[j], heap[i]
+
+
 class MinHeap:
     def __init__(self, array):
         # Do not edit the line below.
