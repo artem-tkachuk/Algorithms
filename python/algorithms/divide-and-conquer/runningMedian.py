@@ -66,19 +66,6 @@ class Heap:
                     index = swap_child_idx
                     c1_idx = 2 * index + 1
 
-            # else:  # self.getType() == "max"
-            #     while c1_idx < n:
-            #         c2_idx = c1_idx + 1  # child 2 index = 2 * index + 2
-            #
-            #         max_child_idx = c1_idx if (c2_idx >= n or self.__heap[c1_idx] > self.__heap[c2_idx]) else c2_idx
-            #
-            #         if self.__heap[index] >= self.__heap[max_child_idx]:
-            #             break  # break the loop if already in the right position
-            #         else:
-            #             swap(index, max_child_idx, self.__heap)
-            #             index = max_child_idx
-            #             c1_idx = 2 * index + 1
-
             return index
 
     # O(log(n)) time | O(1) space
