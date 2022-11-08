@@ -16,6 +16,7 @@ class Solution:
     def get_first_contents(self, log: str):
         return log.split(' ')[1]
 
+    # Maybe not needed
     def isLetterLog(self, log: str):
         return self.get_first_contents(log).lower().isalpha()
 
