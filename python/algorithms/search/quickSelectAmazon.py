@@ -1,35 +1,37 @@
 def quickselect(array, k):
-    n = len(array)
+    start, end = 0, len(array)
+    
+    assert end >= 1 and 0 < k <= end, "Incorrect arguments"
 
-    assert n >= 1 and 0 < k <= n, "Incorrect arguments"
+    while True:
+        pos = k - 1
+        pivot = getPrice(array[start])  # arbitrary choice
 
-    pivot = getPrice(array[0])
+        left, right = start + 1, end - 1
 
-    left, right = 1, n - 1
-
-    # partially sort the array
-    while (left <= right):
-        if getPrice(array[left]) <= pivot:
-            left += 1
-            continue
-
-        if getPrice(array[right]) >= pivot:
-            right -= 1
-            continue
+        # partially sort the array
+        while (left <= right):
+            if getPrice(array[left]) > pivot and getPrice(array[right]) < pivot:
+                swap(array, left, right)
+                
+            if getPrice(array[left]) <= pivot:
+                left += 1
         
-        if getPrice(array[left]) > pivot and getPrice(array[right]) < pivot:
-            swap(array, left, right)
+            if getPrice(array[right]) >= pivot:
+                right -= 1
 
-    # put the pivot in the correct position
-    swap(array, 0, right)
+        # put the pivot in the correct position
+        swap(array, start, right)
 
-    # determine how to proceed
-    if right == k - 1:
-        return array[right]
-    elif right > k - 1:
-        return quickselect(array[:right], k)
-    else:  # right < k - 1
-        return quickselect(array[left:], k - right - 1)
+        # determine how to proceed
+        if right == start + pos:
+            return array[right]
+        elif right > start + pos:
+            end = right
+        else:  # right < start + pos
+            k -= (left - start)
+            start = left
+
 
 
 def swap(array, i, j):
