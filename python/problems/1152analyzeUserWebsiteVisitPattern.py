@@ -41,7 +41,9 @@ def mostVisitedPattern(usernames: list[str], timestamps: list[int], websites: li
     # Debugging
     # print(f"Pattern scores: {pattern_scores}")
     # find the pattern with the largest score
-    lexico_smallest_pattern = '' # TODO how to initialize?
+    # Initial value for this variable doesn't matter because 
+    # we are bound to update it with the first thing we see
+    lexico_smallest_pattern = '' 
     max_score = 0
     # Go over each pattern and find the most commong one
     for pattern in pattern_scores:
