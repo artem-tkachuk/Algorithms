@@ -1,3 +1,5 @@
+import heapq
+
 def dijkstra(graphEdges, start, goal):
     # graphEdges: List[List[List[destination, distance]]
     # list of outgoing edges for each node in a graph
