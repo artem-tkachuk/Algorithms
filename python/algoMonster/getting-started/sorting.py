@@ -1,7 +1,9 @@
 from typing import List
 
+
 def swap(list: List[int], i, j):
     list[i], list[j] = list[j], list[i]
+
 
 # O(n^2) time | O(1) space
 def insertion_sort(arr: List[int]) -> List[int]:
@@ -15,6 +17,7 @@ def insertion_sort(arr: List[int]) -> List[int]:
             curr_idx -= 1
 
     return arr
+
 
 # O(n^2) time | O(1) space
 def selection_sort(arr: List[int]) -> List[int]:
@@ -33,6 +36,7 @@ def selection_sort(arr: List[int]) -> List[int]:
 
     return arr
 
+
 # O(n^2) time | O(1) space
 def bubble_sort(arr: List[int]) -> List[int]:
     n = len(arr)
@@ -49,6 +53,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
             break
 
     return arr
+
 
 # O(n\log(n)) time | O(n) space
 def merge_sort(arr: List[int]) -> List[int]:
@@ -72,7 +77,7 @@ def merge_sort(arr: List[int]) -> List[int]:
         # continue adding while not every element is in final list
         while l < len_left or r < len_right:
             # Get the actual elements in consideration
-            # at least one of those is not +\infty (which means out of bounds)
+            # at least one of those is not +\i nfty (which means out of bounds)
             curr_left = left_list[l] if l < len_left else float('inf')
             curr_right = right_list[r] if r < len_right else float('inf')
             # add smaller one
@@ -85,6 +90,8 @@ def merge_sort(arr: List[int]) -> List[int]:
         # Return the final merged list
         return final_list
 
+
+# O(n\log(n)) time | O(n) space
 def merge_sort_with_helper(arr: List[int]) -> List[int]:
     # Helper function
     def merge_sort_helper(arr: List[int], start: int, end: int) -> List[int]:
@@ -120,16 +127,21 @@ def merge_sort_with_helper(arr: List[int]) -> List[int]:
             # Return the final merged list
             return final_list
 
-
     # Call the helper function on the whole array
     sorted_list = merge_sort_helper(arr, 0, len(arr))
     # return the final sorted list returned by the helper function
     return sorted_list
 
+
 # O(...) time | O(...) space
 def quickSort(arr: List[int]) -> List[int]:
-    # TODO implement quicksort here
-    pass
+    # length of our list in consideration
+    n = len(arr)
+    # 1 element or not elements is already sorted
+    if n <= 1:
+        return arr
+    # otherwise apply quicksort
+
 
 if __name__ == '__main__':
     unsorted_list = [7, 2, 6, 3, 4, 8, 12, 2, -3]

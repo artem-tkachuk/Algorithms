@@ -1,3 +1,4 @@
+from typing import List
 from collections import defaultdict, deque
 
 def topological_sort(graph: defaultdict(list)):
@@ -37,17 +38,43 @@ def count_parents(graph: defaultdict(list)):
             counts[neighbor] += 1
 
     return counts
-        
+
 
 def get_children(graph: defaultdict(list), node: str):
     return graph[node]
 
-if __name__ == '__main__':
-    graph = {
-        "A": ["B", "C"],
-        "B": ["D"],
-        "C": ["D"],
-        "D": []
-    }
+def build_graph(tasks: List[str], requirements: List[List[str]]):
+    # This can't be defaultdict(list) because there will be no entry for sink nodes
+    # and the total # of vertices obtained through len(graph) will be incorrect
+    graph = {vertex: [] for vertex in tasks}
+    
+    for (startNode, endNode) in requirements:
+        graph[startNode].append(endNode)
 
-    print(topological_sort(graph))
+    return graph
+
+def task_scheduling(tasks: List[str], requirements: List[List[str]]) -> List[str]:
+    graph = build_graph(tasks, requirements)
+    task_schedule = topological_sort(graph)
+    # There is guaranteed to be a solution, so no need for validation
+    return task_schedule
+
+if __name__ == '__main__':
+    tasks = ["a", "b", "c", "d"]
+    requirements = [["a", "b"], ["c", "b"], ["b", "d"]]
+    res = task_scheduling(tasks, requirements)
+    if len(res) != len(tasks):
+        print(f'output size {len(res)} does not match input size {len(tasks)}')
+        exit()
+    indices = {task: i for i, task in enumerate(res)}
+    for req in requirements:
+        for task in req:
+            if task not in indices:
+                print(f"'{task}' is not in output")
+                exit()
+        a, b = req
+        if indices[a] >= indices[b]:
+            print(f"'{a}' is not before '{b}'")
+            exit()
+    print(f'The topological ordering is {res}')
+    print('ok')

@@ -8,15 +8,15 @@ def bfs(graph, starting_vertex):
         vertex = queue.popleft()
         # Visit the vertex
         print(vertex)
-        visited.add(vertex)
         # explore neighbors
         for neighbor in get_neighbors(graph, vertex):
             if neighbor not in visited:
                 queue.append(neighbor)
+                visited.add(vertex)
 
 def bfs_with_level_count(graph, starting_vertex):
     queue = deque([starting_vertex])
-    visited = set()
+    visited = set([starting_vertex])
     level = 0
 
     while len(queue) > 0:
@@ -27,11 +27,11 @@ def bfs_with_level_count(graph, starting_vertex):
             vertex = queue.popleft()
             # Visit the vertex
             print(vertex)
-            visited.add(vertex)
             # explore neighbors
             for neighbor in get_neighbors(graph, vertex):
                 if neighbor not in visited:
                     queue.append(neighbor)
+                    visited.add(vertex)
         # increment the level since we are going to a new level at this point
         level += 1
 
