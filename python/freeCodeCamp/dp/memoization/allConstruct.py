@@ -25,13 +25,22 @@ def allConstructHelper(target_string, word_bank, memo={}):
             # get all the ways to construct this suffix using words from the word bank
             # do a deep copy to prevent messing up the memoized arrays
             suffix_ways = allConstructHelper(suffix, word_bank, memo)
+            # prepend the word(prefix) to each way to construct suffix
+            # to obtain all ways to construct target_string
+            ways_to_construct_target += map(lambda way: [word, *way], suffix_ways)
+
+            # ALTERNATIVE STEP-BY-STEP SOLUTION
             # go through each way
-            for way in suffix_ways: 
-                # prepend the word(prefix) to each way to construct suffix
-                # to obtain all ways to construct target_string
-                way_with_prefix = [word, *way]
-                # add a combination to the list of all ways to construct target_string
-                ways_to_construct_target.append(way_with_prefix)
+            # for way in suffix_ways: 
+            # prepend the word(prefix) to each way to construct suffix
+            # to obtain all ways to construct target_string
+            #     way_with_prefix = [word, *way]
+            #     # add a combination to the list of all ways to construct target_string
+            #     ways_to_construct_target.append(way_with_prefix)
+
+
+            
+
     # memoize all the ways we were able to find through recursion - can be empty list
     memo[target_string] = ways_to_construct_target
     # return it
