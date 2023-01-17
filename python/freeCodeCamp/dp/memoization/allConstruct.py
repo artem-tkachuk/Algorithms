@@ -23,16 +23,20 @@ def allConstructHelper(target_string, word_bank, memo={}):
             # get what remains after slicing out the prefix
             suffix = target_string[prefix_len:]
             # get all the ways to construct this suffix using words from the word bank
-            ways_to_construct_suffix = allConstructHelper(suffix, word_bank).copy()
+            # do a deep copy to prevent messing up the memoized arrays
+            suffix_ways = allConstructHelper(suffix, word_bank, memo)
             # go through each way
-            for way in ways_to_construct_suffix: 
+            for way in suffix_ways: 
                 # prepend the word(prefix) to each way to construct suffix
                 # to obtain all ways to construct target_string
-                way.insert(0, word)
+                way_with_prefix = [word, *way]
                 # add a combination to the list of all ways to construct target_string
-                ways_to_construct_target.append(way)
-    # return all the ways we were able to find through recursion - can be empty list
+                ways_to_construct_target.append(way_with_prefix)
+    # memoize all the ways we were able to find through recursion - can be empty list
+    memo[target_string] = ways_to_construct_target
+    # return it
     return ways_to_construct_target
+
 
 def isNonEmptyPrefix(what, of_what):
     # prevent infinite loops by checking that prefix is non-empty
