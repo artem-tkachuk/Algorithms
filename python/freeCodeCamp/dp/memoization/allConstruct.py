@@ -38,9 +38,6 @@ def allConstructHelper(target_string, word_bank, memo={}):
             #     # add a combination to the list of all ways to construct target_string
             #     ways_to_construct_target.append(way_with_prefix)
 
-
-            
-
     # memoize all the ways we were able to find through recursion - can be empty list
     memo[target_string] = ways_to_construct_target
     # return it
@@ -56,4 +53,4 @@ def isNonEmptyPrefix(what, of_what):
 print(allConstruct("purple", ['purp', 'p', 'ur', 'le', 'purpl']))
 print(allConstruct("abcdef", ['ab', 'abc', 'cd', 'def', 'abcd', "ef", 'c']))
 print(allConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))
-print(allConstruct("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaz", ['a', "aa", "aaa", "aaaa", "aaaaa"]))
+print(allConstruct("aaaaaaaaaa", ['a', "aa", "aaa", "aaaa", "aaaaa"]))

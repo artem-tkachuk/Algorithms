@@ -1,6 +1,4 @@
 ./.idea
-python/gaussJordan.py
-python/monty.py
 .DS_Store
-
 .idea/
+python/OAs/

@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Node Current File",
+            "port": 9229,
+            "request": "",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
