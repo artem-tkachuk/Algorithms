@@ -2,11 +2,12 @@ def canSumTabulation(target, numbers):
     # an array that will eventually have answers for canSum problem
     # for values in [0, target]
     dp = [False for _ in range(target + 1)]
-    # Seed value, it is always possible to generate a target of 0
+    # Seed value, base case: it is always possible to generate a target of 0
     # by taking no numbers from the numbers array
     dp[0] = True
     # go through every element in dp
     for i, elem in enumerate(dp):
+        # it is useless to propagate the False values
         if elem == True:
             # go through each number in the numbers array
             for num in numbers:
