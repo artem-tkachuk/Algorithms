@@ -16,7 +16,7 @@ def canSumTabulation(target, numbers):
                 # don't overshoot past the right end of the array
                 if next_index <= target:
                     # propagate the True value to every value
-                    # by adding elements of the numbers array 
+                    # obtainable by adding elements of the numbers array 
                     # to the current value
                     dp[next_index] = True
     # return our actual answer
@@ -25,7 +25,7 @@ def canSumTabulation(target, numbers):
 # Testing
 print(canSumTabulation(7, [2, 3]))
 print(canSumTabulation(7, [5, 3, 4, 7]))
-print(canSumTabulation(7, [2, 6, 0]))
+print(canSumTabulation(7, [2, 6]))
 print(canSumTabulation(8, [2, 3, 5]))
 print(canSumTabulation(300, [7, 14]))
 
