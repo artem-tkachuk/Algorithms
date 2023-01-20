@@ -24,9 +24,9 @@ def countConstructTabulation(target_string, word_bank):
                 if isNonEmptyPrefixAt(what=word, of_what=target_string, starting_at=i):
                     # prefix length
                     prefix_len = len(word)
-                    # where to propagate the current true value
+                    # where to propagate the current # of ways value
                     next_index = i + prefix_len
-                    # actually propagate the current true value
+                    # actually propagate the current # of ways value
                     dp[next_index] += num_ways
     # return our actual answer, conveniently stored at the index == len(target_string)
     return dp[m]
