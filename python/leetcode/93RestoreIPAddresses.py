@@ -10,11 +10,11 @@ class Solution:
             curr_si = self.insertDotAt(s, i)
             # Insert the second dot in all possible locations
             # n + 1 because we have already inserted one dot
-            for j in range(i + 2, n + 1):
+            for j in range(i + 2, min(i + 5, n + 1)):
                 curr_sj = self.insertDotAt(curr_si, j)
                 # Insert the third dot in all possible places
                 # n + 2 since we have already added two dots
-                for k in range(j + 2, n + 2):
+                for k in range(j + 2, min(j + 5, n + 2)):
                     final_IP = self.insertDotAt(curr_sj, k)
                     # validate the final IP address
                     if self.validateIPv4Address(final_IP):
@@ -23,7 +23,7 @@ class Solution:
 
         return valid_IPs
 
-    def insertDotAt(s, i):
+    def insertDotAt(self, s, i):
         return s[:i] + '.' + s[i:]
 
 
