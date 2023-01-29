@@ -1,9 +1,11 @@
 from typing import List
 
-def knapsack(weights: List[int]) -> List[int]:
-    return list(knapsackHelper(weights, valuesSet=set()))
+def knapsackWeightOnly(weights: List[int]) -> List[int]:
+    # return list(knapsackWeightOnly_TopDown_Helper(weights, valuesSet=set()))
+    return knapsackWeightOnly_BottomUp_Tabulation_Helper(weights)
 
-def knapsackHelper(weights: List[int], valuesSet: set) -> List[int]:
+# Top down solution, no memoization, bad time complexity 
+def knapsackWeightOnly_TopDown_Helper(weights: List[int], valuesSet: set) -> List[int]:
     # number of elements in the weights array
     n = len(weights)
     # Base case: 0 elements in weights gives sum of 0
@@ -15,12 +17,19 @@ def knapsackHelper(weights: List[int], valuesSet: set) -> List[int]:
     for i in range(n):
         weights_without_i = weights[:i] + weights[(i + 1):]
         # merge all possible sums of the weights array exclusing i'th elem to all the valuesSet
-        valuesSet |= knapsackHelper(weights_without_i, valuesSet)
+        valuesSet |= knapsackWeightOnly_TopDown_Helper(weights_without_i, valuesSet)
     # return all possible sums for the current weights array
     return valuesSet
     
+
+# bottom-up tabulation solution
+def knapsackWeightOnly_BottomUp_Tabulation_Helper(weights: List[int]):
+    
+
+
+
 # Testing
-print(knapsack([1, 3, 3, 5]))
-print(knapsack([1, 2, 3]))
+print(knapsackWeightOnly([1, 3, 3, 5]))
+print(knapsackWeightOnly([1, 2, 3]))
 
 
