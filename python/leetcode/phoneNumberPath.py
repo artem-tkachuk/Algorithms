@@ -110,6 +110,6 @@ def find(keypad, digit):
 #     print(f'Index of {i} is {find(keypad_no_zero, str(i))}')
 
 # Testing
-phone_number = "65008420527"
+phone_number = "6463570309"
 for action in phoneNumberPath(phone_number):
     print(action)
