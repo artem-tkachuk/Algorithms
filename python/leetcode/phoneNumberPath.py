@@ -6,6 +6,13 @@ def phoneNumberPath(phone_number: str) -> List[str]:
     # Error handling
     assert n > 0, "empty phone number!"
     # keypad model
+    keypad = [
+        ["1", "2", "3"],
+        ["4", "5", "6"],
+        ["7", "8", "9"],
+        ["",  "0",  ""]
+    ]
+    # keypad model without 0 for simplicity
     keypad_no_zero = [
         ["1", "2", "3"],
         ["4", "5", "6"],
